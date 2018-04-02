@@ -1,0 +1,57 @@
+buildscript {
+    ext {
+        // Dependencies
+        lombok_version = "1.16.20"
+        zxing_version = "3.3.2"
+        jetbrains_annotations_version = "16.0.1"
+        jbcrypt_version = "0.4"
+
+        // Plugins
+        gradle_extra_plugin_version = "3.0.3"
+    	javafx_gradle_plugin_version = "8.8.0"
+    }
+    repositories {
+        jcenter()
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.netflix.nebula:gradle-extra-configurations-plugin:$gradle_extra_plugin_version"
+        classpath "de.dynamicfiles.projects.gradle.plugins:javafx-gradle-plugin:$javafx_gradle_plugin_version"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'nebula.provided-base'
+apply plugin: 'javafx-gradle-plugin'
+
+sourceCompatibility = 1.8
+
+jfx {
+	mainClass = 'org.myshelf.FXEncoder.Main'
+	runJavaParameter = '-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005'
+	vendor = "Moritz Hepp"
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    // Encryptions
+    compile "org.mindrot:jbcrypt:$jbcrypt_version"
+
+    // For Java Null-safety
+    compile "org.jetbrains:annotations:$jetbrains_annotations_version"
+
+    // For java boilerplate enhancement
+    provided "org.projectlombok:lombok:$lombok_version"
+
+    // For QR-Code generation
+    compile "com.google.zxing:core:$zxing_version"
+    compile "com.google.zxing:javase:$zxing_version"
+}
