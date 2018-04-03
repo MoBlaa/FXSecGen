@@ -6,15 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.net.URL;
+import java.util.Objects;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(new URL("file:////home/moblaa/Dokumente/workspace/myshelf/CodeGenerator/src/main/java/org/myshelf/FXEncoder/sample.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getClassLoader().getResource("org.myshelf.FXEncoder/sample.fxml")));
         primaryStage.setTitle("Code-Generator");
-        primaryStage.setScene(new Scene(root, 400, 400));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
