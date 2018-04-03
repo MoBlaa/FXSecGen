@@ -27,7 +27,7 @@ apply plugin: 'nebula.provided-base'
 
 sourceCompatibility = 1.8
 
-mainClassName = 'org.myshelf.FXEncoder.Main'
+mainClassName = 'org.myshelf.fxencoder.Main'
 
 jar {
 	manifest {
