@@ -5,9 +5,12 @@ buildscript {
         zxing_version = "3.3.2"
         jetbrains_annotations_version = "16.0.1"
         jbcrypt_version = "0.4"
+        bc_version = "1.59"
+        gson_version = "2.8.2"
 
         // Plugins
         gradle_extra_plugin_version = "3.0.3"
+        javafx_plugin_version = "8.8.0"
     }
     repositories {
         jcenter()
@@ -16,27 +19,16 @@ buildscript {
     }
     dependencies {
         classpath "com.netflix.nebula:gradle-extra-configurations-plugin:$gradle_extra_plugin_version"
+        classpath "de.dynamicfiles.projects.gradle.plugins:javafx-gradle-plugin:$javafx_plugin_version"
     }
 }
 
 apply plugin: 'java'
-apply plugin: 'application'
-apply plugin: 'idea'
-apply plugin: 'application'
 apply plugin: 'nebula.provided-base'
+apply plugin: 'javafx-gradle-plugin'
 
 sourceCompatibility = 1.8
-
-mainClassName = 'org.myshelf.fxencoder.Main'
-
-jar {
-	manifest {
-		attributes "Main-Class": "$mainClassName"
-	}
-	from {
-		configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-	}
-}
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -44,9 +36,27 @@ repositories {
     jcenter()
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/java", "src/main/resources"]
+            includes = ["**/*.fxml"]
+        }
+    }
+}
+
+jfx {
+    mainClass = "org.myshelf.fxencoder.Main"
+    vendor = "MyShelf"
+}
+
 dependencies {
     // Encryptions
     compile "org.mindrot:jbcrypt:$jbcrypt_version"
+    compile "org.bouncycastle:bcprov-jdk15on:$bc_version"
+
+    // Serialization
+    compile "com.google.code.gson:gson:$gson_version"
 
     // For Java Null-safety
     compile "org.jetbrains:annotations:$jetbrains_annotations_version"

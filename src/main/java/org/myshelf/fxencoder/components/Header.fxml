@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import org.myshelf.fxencoder.components.Header?>
+<fx:root type="org.myshelf.fxencoder.components.Header" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <Label fx:id="lbTitle" layoutX="273.0" layoutY="42.0" textAlignment="CENTER">
+            <font>
+                <Font size="24.0" />
+            </font>
+            <padding>
+                <Insets top="20.0" bottom="20.0" />
+            </padding>
+        </Label>
+    </center>
+    <bottom>
+        <Separator BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20.0" left="30.0" right="30.0" />
+            </padding>
+        </Separator>
+    </bottom>
+</fx:root>

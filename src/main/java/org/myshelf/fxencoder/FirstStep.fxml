@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import org.myshelf.fxencoder.components.Footer?>
+<?import org.myshelf.fxencoder.components.Header?>
+<BorderPane prefHeight="900.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.myshelf.fxencoder.FirstStepController">
+    <center>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                    minWidth="-Infinity">
+            <ImageView fx:id="ivCode" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true"
+                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                       AnchorPane.topAnchor="0.0"/>
+        </AnchorPane>
+    </center>
+    <top>
+        <Header fx:id="header" text="Step 1: Scan QR-Code with mobile device"/>
+    </top>
+    <bottom>
+        <Footer fx:id="footer" hasNext="true" hasPrevious="false" canRefresh="true"
+                BorderPane.alignment="CENTER"/>
+    </bottom>
+</BorderPane>

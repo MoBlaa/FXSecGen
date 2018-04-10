@@ -1,29 +1,27 @@
-package org.myshelf.fxencoder;
+package org.myshelf.fxencoder.util;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.WriterException;
+import com.google.zxing.*;
 import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.EnumMap;
+import java.util.Optional;
 
 public class QRCodeEncoder {
-    private final QRCodeWriter writer;
+    private final Writer writer;
     private final int size;
 
     public QRCodeEncoder(int size) {
         this.size = size;
-        this.writer = new QRCodeWriter();
+        this.writer = new MultiFormatWriter();
     }
 
     public Optional<BufferedImage> getCodeImage(@NotNull String input) {
         EnumMap<EncodeHintType, Object> hints = new EnumMap<>(EncodeHintType.class);
-        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
 
         BufferedImage image = null;
         try {

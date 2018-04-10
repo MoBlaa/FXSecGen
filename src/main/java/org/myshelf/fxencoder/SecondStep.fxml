@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import org.myshelf.fxencoder.components.Footer?>
+<?import org.myshelf.fxencoder.components.Header?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.myshelf.fxencoder.SecondStepController">
+    <center>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+            <Button fx:id="btnOpenFiles">
+                <padding>
+                    <Insets bottom="20.0" top="20.0"/>
+                </padding>
+            </Button>
+        </AnchorPane>
+    </center>
+    <top>
+        <Header fx:id="header" text="Step 2: Transfer the Public-Key-File from your mobile Device"/>
+    </top>
+    <bottom>
+        <Footer fx:id="footer" hasNext="true" hasPrevious="true" canRefresh="false"
+                BorderPane.alignment="CENTER"/>
+    </bottom>
+</BorderPane>
