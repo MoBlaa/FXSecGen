@@ -10,6 +10,7 @@ buildscript {
 
         // Plugins
         gradle_extra_plugin_version = "3.0.3"
+        shadow_version = '2.0.3'
     }
     repositories {
         jcenter()
@@ -18,12 +19,14 @@ buildscript {
     }
     dependencies {
         classpath "com.netflix.nebula:gradle-extra-configurations-plugin:$gradle_extra_plugin_version"
+        classpath "com.github.jengelman.gradle.plugins:shadow:$shadow_version"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'nebula.provided-base'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -48,7 +51,7 @@ sourceSets {
 dependencies {
     // Encryptions
     compile "org.mindrot:jbcrypt:$jbcrypt_version"
-    compile "org.bouncycastle:bcprov-jdk15on:$bc_version"
+    shadow "org.bouncycastle:bcprov-jdk15on:$bc_version"
 
     // Serialization
     compile "com.google.code.gson:gson:$gson_version"
@@ -62,17 +65,4 @@ dependencies {
     // For QR-Code generation
     compile "com.google.zxing:core:$zxing_version"
     compile "com.google.zxing:javase:$zxing_version"
-}
-
-jar {
-    manifest {
-        attributes 'Main-Class': "org.myshelf.fxencoder.Main",
-                'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
-    }
-    from (configurations.compile.collect { it.isDirectory() ? it : zipTree(it)}) {
-        exclude 'META-INF/MANIFEST.MF'
-        exclude 'META-INF/*.SF'
-        exclude 'META-INF/*.DSA'
-        exclude 'META-INF/*.RSA'
-    }
 }
