@@ -10,13 +10,15 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.myshelf.fxencoder.SecondStepController">
     <center>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-            <Button fx:id="btnOpenFiles">
-                <padding>
-                    <Insets bottom="20.0" top="20.0"/>
-                </padding>
-            </Button>
-        </AnchorPane>
+        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+            <center>
+                <Button fx:id="btnOpenFiles" text="Show Files ...">
+                    <padding>
+                        <Insets right="10.0" left="10.0" bottom="10.0" top="10.0"/>
+                    </padding>
+                </Button>
+            </center>
+        </BorderPane>
     </center>
     <top>
         <Header fx:id="header" text="Step 2: Transfer the Public-Key-File from your mobile Device"/>

@@ -1,7 +1,6 @@
 buildscript {
     ext {
         // Dependencies
-        lombok_version = "1.16.20"
         zxing_version = "3.3.2"
         jetbrains_annotations_version = "16.0.1"
         jbcrypt_version = "0.4"
@@ -9,7 +8,6 @@ buildscript {
         gson_version = "2.8.2"
 
         // Plugins
-        gradle_extra_plugin_version = "3.0.3"
         shadow_version = '2.0.3'
     }
     repositories {
@@ -18,18 +16,16 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.netflix.nebula:gradle-extra-configurations-plugin:$gradle_extra_plugin_version"
         classpath "com.github.jengelman.gradle.plugins:shadow:$shadow_version"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'application'
-apply plugin: 'nebula.provided-base'
 apply plugin: 'com.github.johnrengelman.shadow'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.10
+targetCompatibility = 1.10
 
 mainClassName = "org.myshelf.fxencoder.Main"
 
@@ -59,8 +55,9 @@ dependencies {
     // For Java Null-safety
     compile "org.jetbrains:annotations:$jetbrains_annotations_version"
 
-    // For java boilerplate enhancement
-    provided "org.projectlombok:lombok:$lombok_version"
+    // For java boilerplate enhancement; lombok is not supporting java 10 yet
+
+    //provided "org.projectlombok:lombok:$lombok_version"
 
     // For QR-Code generation
     compile "com.google.zxing:core:$zxing_version"

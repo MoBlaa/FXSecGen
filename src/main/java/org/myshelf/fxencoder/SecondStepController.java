@@ -50,5 +50,6 @@ public class SecondStepController {
                 new FileChooser.ExtensionFilter("All Files", "*.*"),
                 new FileChooser.ExtensionFilter("Public-Key Files", ".pub")
         );
+        fileChooser.setSelectedExtensionFilter(fileChooser.getExtensionFilters().get(fileChooser.getExtensionFilters().size() - 1));
     }
 }
