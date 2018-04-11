@@ -8,7 +8,8 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.myshelf.fxencoder.util.KeyExchangeHelper;
+import org.myshelf.fxencoder.cipher.DefaultAlice;
+import org.myshelf.fxencoder.cipher.IAlice;
 
 import java.io.IOException;
 import java.security.PublicKey;
@@ -16,13 +17,13 @@ import java.security.Security;
 
 public class Main extends Application {
 
-    private KeyExchangeHelper helper;
+    private IAlice helper;
     private Stage primaryStage;
 
     private int currentStep;
 
     public Main() {
-        this.helper = new KeyExchangeHelper();
+        this.helper = new DefaultAlice();
         this.currentStep = 0;
     }
 
@@ -84,12 +85,10 @@ public class Main extends Application {
         Parent newRoot = loader.load();
 
         // Initialize first Step-UI
-        var pubKey = this.helper.getPublicKey();
-
         FirstStepController controller = loader.getController();
-        controller.init(pubKey,
+        controller.init(this.helper.generatePublicKey(),
                 (event) -> this.onNext(false),
-                (event) -> controller.update(this.helper.generateKeypair().getPublicKey()));
+                (event) -> controller.update(this.helper.generatePublicKey()));
 
         return newRoot;
     }
