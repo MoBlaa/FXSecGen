@@ -2,17 +2,14 @@ package org.myshelf.fxencoder;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.myshelf.fxencoder.cipher.DefaultAlice;
+import org.myshelf.fxencoder.cipher.Alice;
 import org.myshelf.fxencoder.cipher.IAlice;
 
 import java.io.IOException;
-import java.security.PublicKey;
 import java.security.Security;
 
 public class Main extends Application {
@@ -23,7 +20,7 @@ public class Main extends Application {
     private int currentStep;
 
     public Main() {
-        this.helper = new DefaultAlice();
+        this.helper = new Alice();
         this.currentStep = 0;
     }
 

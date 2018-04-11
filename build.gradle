@@ -56,6 +56,7 @@ dependencies {
     // Encryptions
     compile "org.mindrot:jbcrypt:$jbcrypt_version"
     compile "org.bouncycastle:bcprov-jdk15on:$bc_version"
+    shadow "org.bouncycastle:bcprov-jdk15on:$bc_version"
 
     // Serialization
     compile "com.google.code.gson:gson:$gson_version"
@@ -71,18 +72,8 @@ dependencies {
     compile "com.google.zxing:javase:$zxing_version"
 
     // Testing
-    testImplementation(
-            "org.junit.jupiter:junit-jupiter-api:$junit_version"
-    )
-    testRuntimeOnly(
-            "org.junit.jupiter:junit-jupiter-engine:$junit_version"
-    )
-}
-
-shadowJar {
-    dependencies {
-        exclude(dependency("org.bouncycastle:bcprov-jdk15on:$bc_version"))
-    }
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junit_version")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit_version")
 }
 
 test {

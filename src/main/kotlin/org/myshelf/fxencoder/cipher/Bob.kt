@@ -2,11 +2,9 @@ package org.myshelf.fxencoder.cipher
 
 import java.security.KeyPair
 import java.security.PublicKey
-import java.util.*
 import java.util.concurrent.atomic.AtomicReference
-import javax.crypto.Cipher
 
-class DefaultBob(
+class Bob(
         override val keyPair: AtomicReference<KeyPair> = AtomicReference(),
         override val secret: AtomicReference<ByteArray> = AtomicReference(),
         override val otherPub: AtomicReference<PublicKey> = AtomicReference()

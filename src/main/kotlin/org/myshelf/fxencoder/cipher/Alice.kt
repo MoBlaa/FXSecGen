@@ -1,21 +1,10 @@
 package org.myshelf.fxencoder.cipher
 
-import java.nio.charset.Charset
-import java.security.*
-import java.security.spec.ECGenParameterSpec
-import java.security.spec.X509EncodedKeySpec
-import java.util.*
-import java.util.concurrent.ConcurrentMap
+import java.security.KeyPair
+import java.security.PublicKey
 import java.util.concurrent.atomic.AtomicReference
-import javax.crypto.Cipher
-import javax.crypto.KeyAgreement
-import javax.crypto.SecretKey
-import javax.crypto.SecretKeyFactory
-import javax.crypto.spec.IvParameterSpec
-import javax.crypto.spec.PBEKeySpec
-import javax.crypto.spec.SecretKeySpec
 
-class DefaultAlice(
+class Alice(
         override val keyPair: AtomicReference<KeyPair> = AtomicReference(),
         override val secret: AtomicReference<ByteArray> = AtomicReference(),
         override val otherPub: AtomicReference<PublicKey> = AtomicReference()

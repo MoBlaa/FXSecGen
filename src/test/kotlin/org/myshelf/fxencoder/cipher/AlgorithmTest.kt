@@ -16,8 +16,8 @@ class AlgorithmTest {
 
     @Test
     fun testWhole() {
-        val alice: IAlice = DefaultAlice()
-        val bob: IBob = DefaultBob()
+        val alice: IAlice = Alice()
+        val bob: IBob = Bob()
 
         val alicePubKey = alice.generatePublicKey()
         printBytes("AlicePubKey", alicePubKey.encoded)
