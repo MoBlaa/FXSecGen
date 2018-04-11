@@ -7,14 +7,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.myshelf.kosts.Alice;
-import org.myshelf.kosts.IAlice;
+import org.myshelf.kosts.BaseAlice;
 
 import java.io.IOException;
 import java.security.Security;
 
 public class Main extends Application {
 
-    private IAlice helper;
+    private BaseAlice helper;
     private Stage primaryStage;
 
     private int currentStep;
@@ -83,9 +83,12 @@ public class Main extends Application {
 
         // Initialize first Step-UI
         FirstStepController controller = loader.getController();
-        controller.init(this.helper.generatePublicKey(),
+        controller.init(this.helper.getInitDataAndPubKey().toBytesArray(),
                 (event) -> this.onNext(false),
-                (event) -> controller.update(this.helper.generatePublicKey()));
+                (event) -> {
+                    this.helper.reinit();
+                    controller.update(this.helper.getInitDataAndPubKey().toBytesArray());
+                });
 
         return newRoot;
     }

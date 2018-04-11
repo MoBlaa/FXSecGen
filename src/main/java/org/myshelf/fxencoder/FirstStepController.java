@@ -15,7 +15,6 @@ import org.myshelf.fxencoder.components.Header;
 import org.myshelf.fxencoder.util.QRCodeEncoder;
 
 import java.awt.image.BufferedImage;
-import java.security.PublicKey;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -36,7 +35,7 @@ public class FirstStepController {
 
     private double size = 800;
 
-    void init(PublicKey code,
+    void init(byte[] code,
               EventHandler<ActionEvent> onNext,
               EventHandler<ActionEvent> onRefresh) {
         this.update(code);
@@ -48,8 +47,8 @@ public class FirstStepController {
     /**
      * Initializes the controller with the params from the main application.
      */
-    void update(PublicKey code) {
-        String encoded = Base64.toBase64String(code.getEncoded());
+    void update(byte[] code) {
+        String encoded = Base64.toBase64String(code);
         this.toQRCode(encoded);
     }
 
