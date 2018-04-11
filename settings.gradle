@@ -8,3 +8,6 @@
  */
 
 rootProject.name = 'FXSecGen'
+
+include ':KoSTS'
+project(':KoSTS').projectDir = new File('../KoSTS')

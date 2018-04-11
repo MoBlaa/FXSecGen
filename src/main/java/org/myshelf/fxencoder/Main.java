@@ -6,8 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.myshelf.fxencoder.cipher.Alice;
-import org.myshelf.fxencoder.cipher.IAlice;
+import org.myshelf.kosts.Alice;
+import org.myshelf.kosts.IAlice;
 
 import java.io.IOException;
 import java.security.Security;
