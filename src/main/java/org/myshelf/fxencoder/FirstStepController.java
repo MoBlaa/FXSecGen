@@ -35,7 +35,7 @@ public class FirstStepController {
 
     private double size = 800;
 
-    void init(byte[] code,
+    void init(String code,
               EventHandler<ActionEvent> onNext,
               EventHandler<ActionEvent> onRefresh) {
         this.update(code);
@@ -47,9 +47,8 @@ public class FirstStepController {
     /**
      * Initializes the controller with the params from the main application.
      */
-    void update(byte[] code) {
-        String encoded = Base64.toBase64String(code);
-        this.toQRCode(encoded);
+    void update(String code) {
+        this.toQRCode(code);
     }
 
     private void toQRCode(String code) {

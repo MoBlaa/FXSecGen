@@ -10,16 +10,25 @@ buildscript {
         kotlin_version = '1.2.31'
         junit_version = '5.1.0'
         kosts_version = '1.0.0'
+        shadow_version = '2.0.3'
+        bc_version = '1.59'
     }
     repositories {
         jcenter()
         mavenLocal()
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:$shadow_version"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 group 'org.myshelf.fxencoder'
 version '1.0-SNAPSHOT'
@@ -47,6 +56,9 @@ sourceSets {
 dependencies {
     // Serialization
     compile "com.google.code.gson:gson:$gson_version"
+
+    // Encryption provider
+    compile "org.bouncycastle:bcprov-jdk15on:$bc_version"
 
     // For Java Null-safety
     compile "org.jetbrains:annotations:$jetbrains_annotations_version"

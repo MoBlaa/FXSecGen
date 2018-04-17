@@ -83,11 +83,11 @@ public class Main extends Application {
 
         // Initialize first Step-UI
         FirstStepController controller = loader.getController();
-        controller.init(this.helper.getInitDataAndPubKey().toBytesArray(),
+        controller.init(this.helper.getInitDataAndPubKeyEncoded(),
                 (event) -> this.onNext(false),
                 (event) -> {
                     this.helper.reinit();
-                    controller.update(this.helper.getInitDataAndPubKey().toBytesArray());
+                    controller.update(this.helper.getInitDataAndPubKeyEncoded());
                 });
 
         return newRoot;
